@@ -1,12 +1,25 @@
 <template>
   <div id="app">
+    <h1>Testing Vuex</h1>
+    <p>You currently have {{$store.getters.score}} points.</p>
+
+    <hr>
+    <div>
+      <label for="points">Input points to add.</label>
+      <input @input="addPoints" name="points">
+    </div>
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'App'
+  name: 'App',
+  methods: {
+    addPoints(event){
+      this.$store.commit('updateScore', event.target.value === '' ? 0 : event.target.value)
+    }
+  }
 }
 </script>
 
