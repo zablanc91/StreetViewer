@@ -8,13 +8,18 @@
       <label for="points">Input points to add.</label>
       <input @input="addPoints" name="points">
     </div>
+    <Map />
   </div>
 </template>
 
 <script>
+import Map from './components/Map'
 
 export default {
   name: 'App',
+  components: {
+    Map
+  },
   methods: {
     addPoints(event){
       this.$store.commit('updateScore', event.target.value === '' ? 0 : event.target.value)
